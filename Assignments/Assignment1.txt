@@ -1,0 +1,41 @@
+● What is Emmet?
+Emmet is a built-in plugin in Visual Studio Code (VS Code) that helps web developers write HTML and CSS more efficiently.
+Emmet provides a set of shortcuts that can save time and streamline the development process. 
+For example, you can type an exclamation mark and then press tab to insert the basic structure of an HTML boilerplate.
+
+
+
+● Difference between a Library and Framework?
+Libraries can be sued in one part of the project. The developer controls the application flow, including when and where to use the library's functions. 
+You can easily replace a library with another one.
+The framework controls the application flow, and the developer's code must follow the framework's rules. 
+Frameworks are like blueprints for building a house, and the developer must follow the framework's instructions. 
+It's difficult to replace a framework. 
+
+● What is CDN? Why do we use it? How it works
+A content delivery network (CDN) is a system of servers that speeds up the delivery of web content to users
+by storing cached copies of files in data centers near them: 
+When a user visits a website, the CDN stores the website's content on servers closer to the user, 
+reducing the distance the data has to travel to reach the user's computer. 
+This reduces latency, or the delay in communication between the user and the website.
+
+● Why is React known as React?
+It "reacts" quickly to changes without reloading the whole page.
+
+● What is crossorigin in script tag?
+The crossorigin attribute sets the mode of the request to an HTTP CORS Request.CORS stands for Cross Origin Resource sharing.
+It is a mechanism that allows sharing of resource from another domain out side of the current domain. 
+It is a way to define how a browser and server can interact to determine whether it is safe to allow cross origin request. 
+
+● What is diference between React and ReactDOM
+React is a library to build user interfaces. ReactDOM manages the interaction between React and the browser.
+
+● What is difference between react.development.js and react.production.js files via CDN?
+Development files are used for dev builds.
+Production.js files are used for profuction builds.
+
+● What is async and defer? - see my Youtube video ;)
+Aync: Html parsing continues and script fetching will occur in parallel, 
+but once the script is fetched it be executed and rest of the parsing can happen after that
+Defer: Html parsing continue and script fetching will occur in parallel but script will only be 
+executed once the entire html parsing is complete. Its execution is deferred basically.
