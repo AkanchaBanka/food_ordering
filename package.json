@@ -1,0 +1,26 @@
+{
+  "name": "food_ordering",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkanchaBanka/food_ordering.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkanchaBanka/food_ordering/issues"
+  },
+  "homepage": "https://github.com/AkanchaBanka/food_ordering#readme",
+  "dependencies": {
+    "parcel": "^2.13.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
