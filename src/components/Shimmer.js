@@ -1,10 +1,13 @@
 const Shimmer = () => {
-    return <div className="shimmer-container">
-        <div className="shimmer-cards">Cards</div>
-        <div className="shimmer-cards">Cards</div>
-        <div className="shimmer-cards">Cards</div>
-        <div className="shimmer-cards">Cards</div>
-    </div>
-}
-
-export default Shimmer;
+    return (
+      <div className="res-container" data-testid="shimmer">
+        {Array(10)
+          .fill("")
+          .map((e, index) => (
+            <div key={index} className="shimmer-card"></div>
+          ))}
+      </div>
+    );
+  };
+  
+  export default Shimmer;

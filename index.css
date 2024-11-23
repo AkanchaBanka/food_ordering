@@ -46,9 +46,9 @@
     width: auto;
 }
 
-.shimmer-cards {
+.shimmer-card {
     width: 200px;
-    height:200px;
+    height:400px;
     padding: 5px;
     margin: 5px;
     background-color: grey;
