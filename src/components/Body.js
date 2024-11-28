@@ -4,27 +4,25 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom"
 
 const Body = () => {
-    
-    const [listOfRestaurants, setListOfRestaurants] = useState([]);
-    const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
+    const [filteredListOfRestaurant,setFilteredListOfRestaurant] = useState([]);   
     const [searchText,setSearchText] = useState("");
+    const [listOfRestaurant, setListOfRestaurant] = useState([]);
 
-    useEffect(()=> {
-        fetchData();
+    useEffect(() => {
+        fetchList();
     },[])
 
-    const fetchData = async() => {
-
+    const fetchList = async() => {
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
         )
         const json = await data.json();
         console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        setListOfRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setFilteredListOfRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
     }
 
-    return listOfRestaurants.length === 0 ? <Shimmer/> : ( 
+    return listOfRestaurant.length === 0 ? <Shimmer/> : ( 
         <div className="body">
             <div className="filter">
                 <div className="search">
@@ -39,7 +37,7 @@ const Body = () => {
                         onClick={() => {
                         // filter the restaurants
                             console.log(searchText);
-                            const filteredList = listOfRestaurants.filter((res)=>
+                            const filteredList = listOfRestaurant.filter((res)=>
                                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
                             )
                             setFilteredListOfRestaurant(filteredList);
@@ -53,12 +51,12 @@ const Body = () => {
                     className="filter-btn" 
                     onClick = {() => {
                         console.log("Button Clicked");
-                        const filterList = listOfRestaurants.filter(
+                        const filterList = listOfRestaurant.filter(
                             (res) => res.info.avgRating > 4.5
                         );
                         console.log(filterList);
                         setFilteredListOfRestaurant(filterList);
-                        console.log(listOfRestaurants);
+                        console.log(listOfRestaurant);
                     }}
                 >
                     Top rated restaurants
