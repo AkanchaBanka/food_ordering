@@ -3,6 +3,8 @@ import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";;
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/userContext";
+import { useContext } from "react";
 
 const Body = () => {
     const [filteredListOfRestaurant,setFilteredListOfRestaurant] = useState([]);   
@@ -24,6 +26,9 @@ const Body = () => {
     }
 
     const onlineStatus = useOnlineStatus();
+    console.log(onlineStatus);
+
+    const { setUserName,loggedInUser } = useContext(UserContext);
 
     if (onlineStatus === false)
         return ( 
@@ -71,6 +76,10 @@ const Body = () => {
                 >
                     Top rated restaurants
                 </button>
+                <div>
+                    <label>Username</label>
+                    <input value={loggedInUser} onChange = {(e) => setUserName(e.target.value)}/>
+                </div>
             </div>
             
             <div className="res-container">

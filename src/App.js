@@ -7,13 +7,28 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/userContext";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const AppLayout = () => {
+
+    const [userName, setUserName] = useState();
+
+    useEffect(() =>{
+        const data = {
+            name: "Akancha Banka"
+        }
+        setUserName(data.name);
+    },[]);
+
     return (
-        <div className="app">
-            <Header/>
-            <Outlet/>
-        </div>
+        <UserContext.Provider value = {{loggedInUser: userName, setUserName}}>
+            <div className="app">
+                <Header/>
+                <Outlet/>
+             </div>
+        </UserContext.Provider> 
     )
 }
 
