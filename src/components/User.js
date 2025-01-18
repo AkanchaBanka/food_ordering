@@ -18,8 +18,8 @@ const User = () => {
   const {login, avatar_url} = userInfo;
 
   return (
-    <div>
-        <h1>Name: {login}</h1>
+    <div className="user-card m-4 p-4 bg-gray-50 rounded-lg">
+        <h1>Name: { login }</h1>
         <img src={avatar_url} />
     </div>
   )

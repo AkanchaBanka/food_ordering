@@ -39,16 +39,16 @@ const Body = () => {
 
     return listOfRestaurant.length === 0 ? <Shimmer/> : ( 
         <div className="body">
-            <div className="filter">
-                <div className="search">
+            <div className="filter flex">
+                <div className="search m-4 p-4">
                     <input type="text" 
-                        className="search-box" 
+                        className="border border-solid border-black" 
                         value={searchText}
                         onChange={(e) => {
                             setSearchText(e.target.value)
                         }}
                     />
-                    <button 
+                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
                         onClick={() => {
                         // filter the restaurants
                             console.log(searchText);
@@ -62,27 +62,29 @@ const Body = () => {
                         Search
                     </button>
                 </div>
-                <button 
-                    className="filter-btn" 
-                    onClick = {() => {
-                        console.log("Button Clicked");
-                        const filterList = listOfRestaurant.filter(
-                            (res) => res.info.avgRating > 4.5
-                        );
-                        console.log(filterList);
-                        setFilteredListOfRestaurant(filterList);
-                        console.log(listOfRestaurant);
-                    }}
-                >
-                    Top rated restaurants
-                </button>
-                <div>
-                    <label>Username</label>
-                    <input value={loggedInUser} onChange = {(e) => setUserName(e.target.value)}/>
+                <div className="search m-4 p-4 flex items-center">
+                    <button 
+                        className="px-4 py-2 bg-gray-100 rounded-lg"
+                        onClick = {() => {
+                            console.log("Button Clicked");
+                            const filterList = listOfRestaurant.filter(
+                                (res) => res.info.avgRating >= 4.5
+                            );
+                            console.log(filterList);
+                            setFilteredListOfRestaurant(filterList);
+                            console.log(listOfRestaurant);
+                        }}
+                    >
+                        Top rated restaurants
+                    </button>
+                </div>
+                <div className="search m-4 p-4 flex items-center">
+                    <label>Username : </label>
+                    <input className="border border-black p-2" value={loggedInUser} onChange = {(e) => setUserName(e.target.value)}/>
                 </div>
             </div>
             
-            <div className="res-container">
+            <div className="flex flex-wrap">
                 {filteredListOfRestaurant.map((restaurant)=> (
                     <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}>
                         <RestaurantCard  resObj={restaurant}/>

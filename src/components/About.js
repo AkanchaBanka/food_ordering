@@ -1,7 +1,8 @@
 import User from "./User";
 
-const About = () => {
 
+const About = () => {
+    
     return (
         <div>
             <h1>
