@@ -5,6 +5,7 @@ import useRestaurantMenu from '../utils/useRestaurantMenu';
 import RestaurantCategory from './RestaurantCategory';
 
 
+
 const RestaurantMenu = () => {
 
     const {resId}  = useParams();
@@ -13,6 +14,7 @@ const RestaurantMenu = () => {
     const [showItems, setShowItems] = useState(false);
 
     const resInfo = useRestaurantMenu(resId);
+    
 
     if (resInfo === null ) return <Shimmer/>;
 
