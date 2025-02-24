@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import UserContext from "../utils/userContext";
 import { useContext } from "react";
 
+
 const Body = () => {
     const [filteredListOfRestaurant,setFilteredListOfRestaurant] = useState([]);   
     const [searchText,setSearchText] = useState("");
@@ -13,7 +14,7 @@ const Body = () => {
 
     const fetchList = async() => {
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+            '/api/restaurants'
         );
         const json = await data.json();
         console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
