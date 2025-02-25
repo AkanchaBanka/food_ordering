@@ -1,5 +1,6 @@
 const express = require('express');
-const fetch = require('node-fetch'); // If using node-fetch
+const axios = require('axios');
+ // If using node-fetch
 
 const app = express();
 
@@ -13,12 +14,15 @@ app.use((req, res, next) => {
 });
 
 // Proxy endpoint
-app.get("/api/proxy", async (req, res) => {
+app.get("/", async (req, res) => {
     console.log("Fetching from api/restaurants")
     const apiUrl = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING'; // The URL of the external API you want to call
 
     try {
-        const response = await fetch(apiUrl);
+        const response = await axios.get(apiUrl);
+        if (!response.ok) { // Check if the response status code was OK (200-299)
+            throw new Error(`API responded with status code ${response.status}`);
+        }
         const data = await response.json();
         console.log(data);
         res.status(200).json(data);
