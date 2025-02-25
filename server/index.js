@@ -21,7 +21,6 @@ app.get("/api/proxy", async (req, res) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log(data);
-        res.json(data);
         res.status(200).json(data);
     } catch (error) {
         console.error('Failed to fetch external API:', error);
