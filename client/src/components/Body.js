@@ -14,7 +14,7 @@ const Body = () => {
 
     const fetchList = async() => {
         const data = await fetch(
-            '/api/restaurants'
+            'https://food-ordering-server-sigma.vercel.app/'
         );
         const json = await data.json();
         console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
