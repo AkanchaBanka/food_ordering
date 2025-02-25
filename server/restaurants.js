@@ -11,7 +11,7 @@ export default async (req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         // res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
         // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
+        
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch data' });
