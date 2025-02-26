@@ -34,6 +34,30 @@ app.get("/", async (req, res) => {
     }
 });
 
+// 🌟 Route 2: Fetch a specific restaurant's menu dynamically
+app.get("/restaurant/:resId", async (req, res) => {
+    const { resId } = req.params;
+    console.log(`Fetching menu for restaurant ID: ${resId}`);
+
+    if (!resId) {
+        return res.status(400).json({ error: "Missing restaurantId parameter" });
+    }
+
+    const apiUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9265132&lng=77.63615519999999&restaurantId=${resId}`;
+    // export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9265132&lng=77.63615519999999&restaurantId=";
+
+    try {
+        const response = await axios.get(apiUrl, { headers });
+        console.log(response.data);
+        res.status(200).json(response.data);
+    } catch (error) {
+        console.error("Failed to fetch menu:", error.message);
+        const status = error.response ? error.response.status : 500;
+        res.status(status).json({ error: "Failed to fetch menu", details: error.message });
+    }
+});
+
+
 
 
 // Listening in Vercel should not specify the port
