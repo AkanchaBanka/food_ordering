@@ -11,6 +11,7 @@ const Body = () => {
     const [filteredListOfRestaurant,setFilteredListOfRestaurant] = useState([]);   
     const [searchText,setSearchText] = useState("");
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
+    const [filterEnabled, setFilterEnabled] = useState(false);
 
     const fetchList = async() => {
         const data = await fetch(
@@ -53,6 +54,7 @@ const Body = () => {
                         onClick={() => {
                         // filter the restaurants
                             console.log(searchText);
+                            setFilterEnabled(true);
                             const filteredList = listOfRestaurant.filter((res)=>
                                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
                             )
@@ -62,12 +64,16 @@ const Body = () => {
                     >
                         Search
                     </button>
+                    {filterEnabled && <button className="px-4 py-2 bg-green-100 m-4 rounded-lg">
+                        View All
+                    </button>}
                 </div>
                 <div className="search m-4 p-4 flex items-center">
                     <button 
                         className="px-4 py-2 bg-gray-100 rounded-lg"
                         onClick = {() => {
                             console.log("Button Clicked");
+                            setFilterEnabled(true);
                             const filterList = listOfRestaurant.filter(
                                 (res) => res.info.avgRating >= 4.5
                             );
