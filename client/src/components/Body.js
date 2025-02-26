@@ -64,7 +64,11 @@ const Body = () => {
                     >
                         Search
                     </button>
-                    {filterEnabled && <button className="px-4 py-2 bg-green-100 m-4 rounded-lg">
+                    {filterEnabled && <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+                    onClick={()=>{
+                        setFilterEnabled(false);
+                        setFilteredListOfRestaurant(listOfRestaurant);
+                    }}>
                         View All
                     </button>}
                 </div>
