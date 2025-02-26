@@ -12,14 +12,13 @@ const useRestaurantMenu = (resId) => {
 
     const fetchMenu = async () => {
         const data = await fetch(
-            MENU_API + resId
+            "https://food-ordering-server-sigma.vercel.app/restaurant/" + resId
           );
         const json = await data.json();
         // console.log(json);
         setResInfo(json.data);
         // console.log(resInfo);
     }
-
     return resInfo;
 }
 
