@@ -34,24 +34,7 @@ app.get("/", async (req, res) => {
     }
 });
 
-// Proxy endpoint
-app.get("/restaurant/:resId", async (req, res) => {
-    const { resId } = req.params; // Extract restaurantId from route parameters
-    console.log(`Fetching menu for restaurant ID: ${resId}`);
-    const apiUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9265132&lng=77.63615519999999&restaurantId=${resId}`;
 
-    try {
-        const response = await axios.get(apiUrl, {headers});
-        // Directly use response.data since Axios handles JSON parsing
-        console.log(response.data);
-        res.status(200).json(response.data);
-    } catch (error) {
-        console.error('Failed to fetch external API:', error.message);
-        // Properly handle and send the status code from Axios error if available
-        const status = error.response ? error.response.status : 500;
-        res.status(status).json({ error: 'Failed to fetch external API', details: error.message });
-    }
-});
 
 // Listening in Vercel should not specify the port
 module.exports = app;
